@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartTech Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ====== PASTE YOUR ZOHO SALESIQ SCRIPT BELOW THIS LINE ====== -->
+    
+    <!-- Example:
+    <script type="text/javascript" id="zsiqscript">
+        // Paste your SalesIQ tracking code here
+    </script>
+    -->
+
+    <!-- ====== END SALESIQ CODE ====== -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #333;
+        }
+
+        header {
+            background: #1f4e79;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #163b5c;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .btn {
+            background: #1f4e79;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background: #163b5c;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            width: 250px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: #1f4e79;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        form input, form textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>SmartTech Solutions</h1>
+    <p>We Provide Digital & Automation Services</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="home">
+    <h2>Welcome to SmartTech</h2>
+    <p>We help businesses grow with smart automation.</p>
+    <button class="btn" onclick="trackInterest()">I'm Interested</button>
+</section>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="card-container">
+        <div class="card">
+            <h3>Web Development</h3>
+            <p>Professional business websites.</p>
+        </div>
+        <div class="card">
+            <h3>CRM Automation</h3>
+            <p>Automate your sales & marketing.</p>
+        </div>
+        <div class="card">
+            <h3>Chatbot Setup</h3>
+            <p>AI chatbots for customer engagement.</p>
+        </div>
+    </div>
+</section>
+
+<section id="pricing">
+    <h2>Pricing Plans</h2>
+    <div class="card-container">
+        <div class="card">
+            <h3>Basic</h3>
+            <p>₹4999</p>
+        </div>
+        <div class="card">
+            <h3>Pro</h3>
+            <p>₹9999</p>
+        </div>
+        <div class="card">
+            <h3>Enterprise</h3>
+            <p>Custom Pricing</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <form onsubmit="submitForm(event)">
+        <input type="text" placeholder="Your Name" required><br>
+        <input type="email" placeholder="Your Email" required><br>
+        <textarea rows="4" placeholder="Your Message"></textarea><br>
+        <button class="btn">Submit</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 SmartTech Solutions | Demo Site for SalesIQ Testing</p>
+</footer>
+
+<script>
+    // Track button click for SalesIQ testing
+    function trackInterest() {
+        alert("Thank you for your interest!");
+        console.log("User clicked Interested button");
+
+        // You can later connect this to SalesIQ custom event tracking
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+        alert("Form submitted successfully!");
+        console.log("Lead form submitted");
+
+        // Use this page to test:
+        // - Lead capture
+        // - Chat triggers on form visit
+        // - Visitor scoring
+    }
+
+    // Time-based action (for proactive chat testing)
+    setTimeout(function(){
+        console.log("User stayed for 15 seconds");
+    }, 15000);
+</script>
+
+<script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siq7afc45558da4f5365a7133c425f75a7dac879785861f436ef6df3815907c60ff" defer></script>
+</body>
+</html>
