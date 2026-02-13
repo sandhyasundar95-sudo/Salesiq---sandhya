@@ -1,92 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>SmartTech Solutions</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Website with Buttons</title>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
         body {
-            background: #f4f6f9;
-            color: #333;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
         }
 
         header {
-            background: #1f4e79;
+            background: #2196F3;
             color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        nav {
-            background: #163b5c;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
+            padding: 25px;
         }
 
         section {
-            padding: 40px 20px;
-            text-align: center;
+            padding: 40px;
         }
 
-        .btn {
-            background: #1f4e79;
-            color: white;
-            padding: 10px 20px;
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 16px;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
-            margin-top: 15px;
+            transition: 0.3s;
         }
 
-        .btn:hover {
-            background: #163b5c;
+        .btn1 {
+            background: #4CAF50;
+            color: white;
         }
 
-        .card-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+        .btn1:hover {
+            background: #45a049;
+        }
+
+        .btn2 {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn2:hover {
+            background: #e68900;
+        }
+
+        .btn3 {
+            background: #f44336;
+            color: white;
+        }
+
+        .btn3:hover {
+            background: #d32f2f;
+        }
+
+        #message {
             margin-top: 20px;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            width: 250px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 18px;
+            font-weight: bold;
         }
 
         footer {
-            background: #1f4e79;
+            background: #2196F3;
             color: white;
             padding: 15px;
-            text-align: center;
-        }
-
-        form input, form textarea {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -94,126 +76,48 @@
 <body>
 
 <header>
-    <h1>SmartTech Solutions</h1>
-    <p>We Provide Digital & Automation Services</p>
+    <h1>My Sample Website</h1>
+    <p>Website with Interactive Buttons</p>
 </header>
 
-<nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
-</nav>
+<section>
+    <h2>Click the Buttons Below 👇</h2>
 
-<section id="home">
-    <h2>Welcome to SmartTech</h2>
-    <p>We help businesses grow with smart automation.</p>
-    <button class="btn" onclick="trackInterest()">I'm Interested</button>
-</section>
+    <button class="btn1" onclick="showMessage('Hello! Welcome to my website 😊')">
+        Say Hello
+    </button>
 
-<section id="services">
-    <h2>Our Services</h2>
-    <div class="card-container">
-        <div class="card">
-            <h3>Web Development</h3>
-            <p>Professional business websites.</p>
-        </div>
-        <div class="card">
-            <h3>CRM Automation</h3>
-            <p>Automate your sales & marketing.</p>
-        </div>
-        <div class="card">
-            <h3>Chatbot Setup</h3>
-            <p>AI chatbots for customer engagement.</p>
-        </div>
-    </div>
-</section>
+    <button class="btn2" onclick="changeBackground()">
+        Change Background
+    </button>
 
-<section id="pricing">
-    <h2>Pricing Plans</h2>
-    <div class="card-container">
-        <div class="card">
-            <h3>Basic</h3>
-            <p>₹4999</p>
-        </div>
-        <div class="card">
-            <h3>Pro</h3>
-            <p>₹9999</p>
-        </div>
-        <div class="card">
-            <h3>Enterprise</h3>
-            <p>Custom Pricing</p>
-        </div>
-    </div>
-</section>
+    <button class="btn3" onclick="clearMessage()">
+        Clear Message
+    </button>
 
-<section id="contact">
-    <h2>Contact Us</h2>
-    <form onsubmit="submitForm(event)">
-        <input type="text" placeholder="Your Name" required><br>
-        <input type="email" placeholder="Your Email" required><br>
-        <textarea rows="4" placeholder="Your Message"></textarea><br>
-        <button class="btn">Submit</button>
-    </form>
+    <div id="message"></div>
 </section>
 
 <footer>
-    <p>© 2026 SmartTech Solutions | Demo Site for SalesIQ Testing</p>
+    © 2026 Sample Website
 </footer>
 
-<!-- ================= WEBSITE LOGIC ================= -->
 <script>
-    console.log("hello123");
-    function trackInterest() {
-        console.log("User clicked Interested button");
-
-        if (window.$zoho && $zoho.salesiq && $zoho.salesiq.visitor) {
-            $zoho.salesiq.visitor.track("Interested_Button_Clicked");
-        }
+    function showMessage(text) {
+        document.getElementById("message").innerHTML = text;
     }
 
-    function submitForm(event) {
-        event.preventDefault();
-        console.log("Lead form submitted");
-
-        if (window.$zoho && $zoho.salesiq && $zoho.salesiq.visitor) {
-            $zoho.salesiq.visitor.track("Lead_Form_Submitted");
-        }
+    function changeBackground() {
+        const colors = ["#f2f2f2", "#ffe0e0", "#e0f7fa", "#fff9c4"];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        document.body.style.background = randomColor;
     }
 
-    setTimeout(function() {
-        console.log("User stayed for 15 seconds");
-
-        if (window.$zoho && $zoho.salesiq && $zoho.salesiq.visitor) {
-            $zoho.salesiq.visitor.track("Stayed_15_Seconds");
-        }
-    }, 15000);
-</script>
-
-<!-- ================= ZOHO SALESIQ INITIALIZATION ================= -->
-<script>
-    window.$zoho = window.$zoho || {};
-    $zoho.salesiq = $zoho.salesiq || {};
-
-    $zoho.salesiq.ready = function() {
-        console.log("SalesIQ is ready!");
-
-        if ($zoho.salesiq.floatbutton) {
-            $zoho.salesiq.floatbutton.visible(true);
-        }
-
-        if ($zoho.salesiq.visitor) {
-            $zoho.salesiq.visitor.track("Test_Visit");
-        }
-    };
-</script>
-
-<script id="zsiqscript"
-    src="https://salesiq.zohopublic.in/widget?wc=siq7afc45558da4f5365a7133c425f75a7dac879785861f436ef6df3815907c60ff"
-    defer>
+    function clearMessage() {
+        document.getElementById("message").innerHTML = "";
+    }
 </script>
 
 </body>
 </html>
-
 
