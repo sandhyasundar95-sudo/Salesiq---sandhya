@@ -161,14 +161,14 @@
     <p>© 2026 SmartTech Solutions | Demo Site for SalesIQ Testing</p>
 </footer>
 
-<!-- ========== WEBSITE SCRIPT ========== -->
+<!-- ===== WEBSITE LOGIC ===== -->
 <script>
     function trackInterest() {
         alert("Thank you for your interest!");
         console.log("User clicked Interested button");
 
-        if (window.$zoho && $zoho.salesiq) {
-            $zoho.salesiq.track("Interested_Button_Clicked");
+        if (window.$zoho && $zoho.salesiq && $zoho.salesiq.visitor) {
+            $zoho.salesiq.visitor.track("Interested_Button_Clicked");
         }
     }
 
@@ -177,34 +177,38 @@
         alert("Form submitted successfully!");
         console.log("Lead form submitted");
 
-        if (window.$zoho && $zoho.salesiq) {
-            $zoho.salesiq.track("Lead_Form_Submitted");
+        if (window.$zoho && $zoho.salesiq && $zoho.salesiq.visitor) {
+            $zoho.salesiq.visitor.track("Lead_Form_Submitted");
         }
     }
 
     setTimeout(function(){
         console.log("User stayed for 15 seconds");
 
-        if (window.$zoho && $zoho.salesiq) {
-            $zoho.salesiq.track("Stayed_15_Seconds");
+        if (window.$zoho && $zoho.salesiq && $zoho.salesiq.visitor) {
+            $zoho.salesiq.visitor.track("Stayed_15_Seconds");
         }
     }, 15000);
 </script>
 
-<!-- ========== ZOHO SALESIQ SCRIPT ========== -->
+<!-- ===== ZOHO SALESIQ INITIALIZATION ===== -->
 <script>
-window.$zoho = window.$zoho || {};
-$zoho.salesiq = $zoho.salesiq || {};
+    window.$zoho = window.$zoho || {};
+    $zoho.salesiq = $zoho.salesiq || {};
 
-$zoho.salesiq.ready = function() {
-    console.log("SalesIQ is ready!");
+    $zoho.salesiq.ready = function() {
+        console.log("SalesIQ is ready!");
 
-    // Ensure chat bubble is visible
-    $zoho.salesiq.floatbutton.visible(true);
+        // Ensure chat button is visible
+        if ($zoho.salesiq.floatbutton) {
+            $zoho.salesiq.floatbutton.visible(true);
+        }
 
-    // Track initial visit
-    $zoho.salesiq.track("Test_Visit");
-};
+        // Track initial visit safely
+        if ($zoho.salesiq.visitor) {
+            $zoho.salesiq.visitor.track("Test_Visit");
+        }
+    };
 </script>
 
 <script id="zsiqscript"
