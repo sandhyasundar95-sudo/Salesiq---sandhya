@@ -161,10 +161,10 @@
     <p>© 2026 SmartTech Solutions | Demo Site for SalesIQ Testing</p>
 </footer>
 
-<!-- ===== WEBSITE LOGIC ===== -->
+<!-- ================= WEBSITE LOGIC ================= -->
 <script>
+    console.log("hello123");
     function trackInterest() {
-        alert("Thank you for your interest!");
         console.log("User clicked Interested button");
 
         if (window.$zoho && $zoho.salesiq && $zoho.salesiq.visitor) {
@@ -174,7 +174,6 @@
 
     function submitForm(event) {
         event.preventDefault();
-        alert("Form submitted successfully!");
         console.log("Lead form submitted");
 
         if (window.$zoho && $zoho.salesiq && $zoho.salesiq.visitor) {
@@ -182,7 +181,7 @@
         }
     }
 
-    setTimeout(function(){
+    setTimeout(function() {
         console.log("User stayed for 15 seconds");
 
         if (window.$zoho && $zoho.salesiq && $zoho.salesiq.visitor) {
@@ -191,7 +190,7 @@
     }, 15000);
 </script>
 
-<!-- ===== ZOHO SALESIQ INITIALIZATION ===== -->
+<!-- ================= ZOHO SALESIQ INITIALIZATION ================= -->
 <script>
     window.$zoho = window.$zoho || {};
     $zoho.salesiq = $zoho.salesiq || {};
@@ -199,12 +198,10 @@
     $zoho.salesiq.ready = function() {
         console.log("SalesIQ is ready!");
 
-        // Ensure chat button is visible
         if ($zoho.salesiq.floatbutton) {
             $zoho.salesiq.floatbutton.visible(true);
         }
 
-        // Track initial visit safely
         if ($zoho.salesiq.visitor) {
             $zoho.salesiq.visitor.track("Test_Visit");
         }
@@ -218,4 +215,5 @@
 
 </body>
 </html>
+
 
