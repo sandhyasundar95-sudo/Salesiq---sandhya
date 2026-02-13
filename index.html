@@ -5,16 +5,6 @@
     <title>SmartTech Solutions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ====== PASTE YOUR ZOHO SALESIQ SCRIPT BELOW THIS LINE ====== -->
-    
-    <!-- Example:
-    <script type="text/javascript" id="zsiqscript">
-        // Paste your SalesIQ tracking code here
-    </script>
-    -->
-
-    <!-- ====== END SALESIQ CODE ====== -->
-
     <style>
         * {
             margin: 0;
@@ -171,13 +161,15 @@
     <p>© 2026 SmartTech Solutions | Demo Site for SalesIQ Testing</p>
 </footer>
 
+<!-- ========== WEBSITE SCRIPT ========== -->
 <script>
-    // Track button click for SalesIQ testing
     function trackInterest() {
         alert("Thank you for your interest!");
         console.log("User clicked Interested button");
 
-        // You can later connect this to SalesIQ custom event tracking
+        if (window.$zoho && $zoho.salesiq) {
+            $zoho.salesiq.track("Interested_Button_Clicked");
+        }
     }
 
     function submitForm(event) {
@@ -185,18 +177,41 @@
         alert("Form submitted successfully!");
         console.log("Lead form submitted");
 
-        // Use this page to test:
-        // - Lead capture
-        // - Chat triggers on form visit
-        // - Visitor scoring
+        if (window.$zoho && $zoho.salesiq) {
+            $zoho.salesiq.track("Lead_Form_Submitted");
+        }
     }
 
-    // Time-based action (for proactive chat testing)
     setTimeout(function(){
         console.log("User stayed for 15 seconds");
+
+        if (window.$zoho && $zoho.salesiq) {
+            $zoho.salesiq.track("Stayed_15_Seconds");
+        }
     }, 15000);
 </script>
 
-<script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siq7afc45558da4f5365a7133c425f75a7dac879785861f436ef6df3815907c60ff" defer></script>
+<!-- ========== ZOHO SALESIQ SCRIPT ========== -->
+<script>
+window.$zoho = window.$zoho || {};
+$zoho.salesiq = $zoho.salesiq || {};
+
+$zoho.salesiq.ready = function() {
+    console.log("SalesIQ is ready!");
+
+    // Ensure chat bubble is visible
+    $zoho.salesiq.floatbutton.visible(true);
+
+    // Track initial visit
+    $zoho.salesiq.track("Test_Visit");
+};
+</script>
+
+<script id="zsiqscript"
+    src="https://salesiq.zohopublic.in/widget?wc=siq7afc45558da4f5365a7133c425f75a7dac879785861f436ef6df3815907c60ff"
+    defer>
+</script>
+
 </body>
 </html>
+
